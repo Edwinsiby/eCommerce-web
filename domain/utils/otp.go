@@ -16,6 +16,7 @@ var (
 	TWILIO_ACCOUNT_SID string
 	TWILIO_AUTH_TOKEN  string
 	VERIFY_SERVICE_SID string
+	var client *twilio.RestClient
 )
 
 func init() {
@@ -26,14 +27,15 @@ func init() {
 	TWILIO_ACCOUNT_SID = os.Getenv("KEY1")
 	TWILIO_AUTH_TOKEN = os.Getenv("KEY2")
 	VERIFY_SERVICE_SID = os.Getenv("KEY3")
+	client  = twilio.NewRestClientWithParams(twilio.ClientParams{
+		Username: TWILIO_ACCOUNT_SID,
+		Password: TWILIO_AUTH_TOKEN,
+	})
 
 }
 
 func SendOtp(phone string) (string, error) {
-	var client *twilio.RestClient = twilio.NewRestClientWithParams(twilio.ClientParams{
-		Username: TWILIO_ACCOUNT_SID,
-		Password: TWILIO_AUTH_TOKEN,
-	})
+	
 	to := "+91" + phone
 	params := &openapi.CreateVerificationParams{}
 	params.SetTo(to)
@@ -49,10 +51,7 @@ func SendOtp(phone string) (string, error) {
 }
 
 func CheckOtp(phone, code string) error {
-	var client *twilio.RestClient = twilio.NewRestClientWithParams(twilio.ClientParams{
-		Username: TWILIO_ACCOUNT_SID,
-		Password: TWILIO_AUTH_TOKEN,
-	})
+	
 	to := "+91" + phone
 	params := &openapi.CreateVerificationCheckParams{}
 	params.SetTo(to)
