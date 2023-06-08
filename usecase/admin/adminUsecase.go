@@ -64,7 +64,7 @@ func (au *AdminUsecase) ExecuteLoginWithPassword(phone, password string) (int, e
 	if err := bcrypt.CompareHashAndPassword([]byte(admin.Password), []byte(password)); err != nil {
 		return 0, errors.New("Invalid Password")
 	} else {
-		return admin.ID, nil
+		return int(admin.ID), nil
 	}
 
 }
