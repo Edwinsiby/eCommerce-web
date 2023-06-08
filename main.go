@@ -34,7 +34,7 @@ import (
 
 //	@license.name	Apache 2.0
 //	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
-
+//	@host		www.zogfestiv.store
 //	@BasePath	/
 
 // @schemes	http
@@ -43,7 +43,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	// test changes
 	userRepo := repository.NewUserRepository(db)
 	adminRepo := adminrepository.NewAdminRepository(db)
 	productRepo := productrepository.NewProductRepository(db)
