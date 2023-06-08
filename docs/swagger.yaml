@@ -316,7 +316,6 @@ definitions:
       phone:
         type: string
     type: object
-host: www.zogfestiv.store
 info:
   contact: {}
   description: API for ecommerce website
