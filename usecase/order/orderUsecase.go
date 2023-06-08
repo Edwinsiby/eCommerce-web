@@ -31,7 +31,7 @@ func (ou *OrderUsecase) ExecutePurchaseCod(userId int, address int) (*entity.Inv
 	if err != nil {
 		return nil, errors.New("Cart  not found")
 	}
-	cartItems, err1 := ou.cartRepo.GetAllCartItems(cart.ID)
+	cartItems, err1 := ou.cartRepo.GetAllCartItems(int(cart.ID))
 	if err1 != nil {
 		return nil, errors.New("Cart Items  not found")
 	}
@@ -90,7 +90,7 @@ func (ou *OrderUsecase) ExecutePurchaseCod(userId int, address int) (*entity.Inv
 		return nil, errors.New("User cart is empty")
 	}
 
-	err = ou.cartRepo.RemoveCartItems(cart.ID)
+	err = ou.cartRepo.RemoveCartItems(int(cart.ID))
 	if err != nil {
 		return nil, errors.New("Delete cart items failed")
 	}
@@ -121,7 +121,7 @@ func (ou *OrderUsecase) ExecutePurchaseRazorPay(userId int, address int, c *gin.
 	if err != nil {
 		return "", 0, errors.New("Cart  not found")
 	}
-	cartItems, err1 := ou.cartRepo.GetAllCartItems(cart.ID)
+	cartItems, err1 := ou.cartRepo.GetAllCartItems(int(cart.ID))
 	if err1 != nil {
 		return "", 0, errors.New("Cart Items  not found")
 	}
@@ -217,7 +217,7 @@ func (ou *OrderUsecase) ExecuteRazorPaymentVerification(Signature, razorId, paym
 	if err != nil {
 		return nil, errors.New("Invoice Creating failed")
 	}
-	err4 := ou.cartRepo.RemoveCartItems(userCart.ID)
+	err4 := ou.cartRepo.RemoveCartItems(int(userCart.ID))
 	if err4 != nil {
 		return nil, errors.New("Delete cart items failed")
 	}
@@ -247,7 +247,7 @@ func (ou *OrderUsecase) ExecutePurchaseWallet(userId int, address int) (*entity.
 	if user.Wallet < int(cart.TotalPrice) {
 		return nil, errors.New("Wallet have not enough money-add money or choose another method")
 	}
-	cartItems, err1 := ou.cartRepo.GetAllCartItems(cart.ID)
+	cartItems, err1 := ou.cartRepo.GetAllCartItems(int(cart.ID))
 	if err1 != nil {
 		return nil, errors.New("Cart Items  not found")
 	}
@@ -305,7 +305,7 @@ func (ou *OrderUsecase) ExecutePurchaseWallet(userId int, address int) (*entity.
 		return nil, errors.New("User cart is empty")
 	}
 
-	err = ou.cartRepo.RemoveCartItems(cart.ID)
+	err = ou.cartRepo.RemoveCartItems(int(cart.ID))
 	if err != nil {
 		return nil, errors.New("Delete cart items failed")
 	}

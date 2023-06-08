@@ -28,7 +28,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 		}
 		cartId = cartid
 	} else {
-		cartId = userCart.ID
+		cartId = int(userCart.ID)
 	}
 
 	if product == "ticket" {
@@ -112,7 +112,7 @@ func (cu *CartUsecase) ExecuteCartList(userId int) ([]entity.CartItem, error) {
 	if err != nil {
 		return nil, errors.New("Failed to find user cart")
 	}
-	cartItems, err := cu.cartRepo.GetAllCartItems(userCart.ID)
+	cartItems, err := cu.cartRepo.GetAllCartItems(int(userCart.ID))
 	if err != nil {
 		return nil, err
 	}
@@ -130,7 +130,7 @@ func (cu *CartUsecase) ExecuteRemoveFromCart(product string, id int, userId int)
 		if err != nil {
 			return errors.New("Ticket not found")
 		}
-		existingTicket, err1 := cu.cartRepo.GetByName(ticket.Name, userCart.ID)
+		existingTicket, err1 := cu.cartRepo.GetByName(ticket.Name, int(userCart.ID))
 		if err1 != nil {
 			return errors.New("Removing ticket from cart failed")
 
@@ -154,7 +154,7 @@ func (cu *CartUsecase) ExecuteRemoveFromCart(product string, id int, userId int)
 		if err != nil {
 			return errors.New("Apparel not found")
 		}
-		existingApparel, err1 := cu.cartRepo.GetByName(apparel.Name, userCart.ID)
+		existingApparel, err1 := cu.cartRepo.GetByName(apparel.Name, int(userCart.ID))
 		if err1 != nil {
 			return errors.New("Removing apparel from cart failed")
 		}
@@ -256,7 +256,7 @@ func (c *CartUsecase) ExecuteApplyCoupon(userId int, code string) (int, error) {
 	if err != nil {
 		return 0, errors.New("Sorry coupon not found")
 	}
-	cartItems, err := c.cartRepo.GetAllCartItems(userCart.ID)
+	cartItems, err := c.cartRepo.GetAllCartItems(int(userCart.ID))
 	if err != nil {
 		return 0, errors.New("User Cart Items not found")
 	}
