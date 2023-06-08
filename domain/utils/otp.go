@@ -16,7 +16,7 @@ var (
 	TWILIO_ACCOUNT_SID string
 	TWILIO_AUTH_TOKEN  string
 	VERIFY_SERVICE_SID string
-	var client *twilio.RestClient
+	client *twilio.RestClient
 )
 
 func init() {
