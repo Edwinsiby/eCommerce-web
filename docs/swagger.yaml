@@ -1,0 +1,1638 @@
+basePath: /
+definitions:
+  entity.Address:
+    properties:
+      city:
+        type: string
+      house:
+        type: string
+      id:
+        type: integer
+      pincode:
+        type: integer
+      street:
+        type: string
+      type:
+        type: string
+    type: object
+  entity.Admin:
+    properties:
+      active:
+        type: boolean
+      adminname:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      role:
+        type: string
+    type: object
+  entity.AdminDashboard:
+    properties:
+      averageordervalue:
+        type: integer
+      newusers:
+        type: integer
+      pendingorders:
+        type: integer
+      returnorders:
+        type: integer
+      stocklesscategory:
+        type: string
+      totalorders:
+        type: integer
+      totalproducts:
+        type: integer
+      totalquery:
+        type: integer
+      totalrevenue:
+        type: integer
+      totalusers:
+        type: integer
+    type: object
+  entity.Apparel:
+    properties:
+      category:
+        type: string
+      id:
+        type: integer
+      imageurl:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      subcategory:
+        type: string
+    type: object
+  entity.ApparelDetails:
+    properties:
+      apparelid:
+        type: integer
+      color:
+        type: string
+      description:
+        type: string
+      size:
+        type: string
+    type: object
+  entity.ApparelInput:
+    properties:
+      apparelid:
+        type: integer
+      category:
+        type: string
+      color:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      imageurl:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      productCategory:
+        type: string
+      productId:
+        type: integer
+      quantity:
+        type: integer
+      size:
+        type: string
+      subcategory:
+        type: string
+    type: object
+  entity.Cart:
+    properties:
+      apparelquantity:
+        type: integer
+      offerprice:
+        type: integer
+      ticketquantity:
+        type: integer
+      totalprice:
+        type: number
+    type: object
+  entity.CartItem:
+    properties:
+      category:
+        type: string
+      price:
+        type: number
+      productid:
+        type: integer
+      productname:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  entity.Coupon:
+    properties:
+      amount:
+        type: integer
+      category:
+        type: string
+      code:
+        type: string
+      type:
+        type: string
+      usage_limit:
+        type: integer
+      used_count:
+        type: integer
+      valid_from:
+        type: string
+      valid_until:
+        type: string
+    type: object
+  entity.Login:
+    properties:
+      password:
+        type: string
+      phone:
+        type: string
+    required:
+    - password
+    - phone
+    type: object
+  entity.Offer:
+    properties:
+      amount:
+        type: integer
+      category:
+        type: string
+      minprice:
+        type: integer
+      name:
+        type: string
+      type:
+        type: string
+      usage_limit:
+        type: integer
+      valid_from:
+        type: string
+      valid_until:
+        type: string
+    type: object
+  entity.Order:
+    properties:
+      adressid:
+        type: integer
+      id:
+        type: integer
+      paymentid:
+        type: string
+      paymentmethod:
+        type: string
+      paymentstatus:
+        type: string
+      status:
+        type: string
+      total:
+        type: number
+      userid:
+        type: integer
+    type: object
+  entity.Ticket:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      id:
+        type: integer
+      imageurl:
+        type: string
+      location:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      subcategory:
+        type: string
+    type: object
+  entity.TicketDetails:
+    properties:
+      description:
+        type: string
+      ticketid:
+        type: integer
+      venue:
+        type: string
+    type: object
+  entity.TicketInput:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      imageurl:
+        type: string
+      location:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      productCategory:
+        type: string
+      productId:
+        type: integer
+      quantity:
+        type: integer
+      subcategory:
+        type: string
+      ticketid:
+        type: integer
+      venue:
+        type: string
+    type: object
+  entity.User:
+    properties:
+      email:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      wallet:
+        type: integer
+    required:
+    - email
+    - firstname
+    - lastname
+    - password
+    - phone
+    type: object
+  entity.Wishlist:
+    properties:
+      category:
+        type: string
+      price:
+        type: number
+      productid:
+        type: integer
+      productname:
+        type: string
+    type: object
+  models.EditUser:
+    properties:
+      email:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+    required:
+    - email
+    - firstname
+    - lastname
+    type: object
+  models.Signup:
+    properties:
+      email:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API for ecommerce website
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Zog_festiv eCommerce API
+  version: "1.0"
+paths:
+  /addaddress:
+    post:
+      consumes:
+      - application/json
+      description: Add new address to the database with user id
+      parameters:
+      - description: User Address
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Address'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Add Address
+      tags:
+      - User Shopping
+  /addapparel:
+    post:
+      consumes:
+      - application/json
+      description: Adding new product of category apparel in database
+      parameters:
+      - description: Apparel Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.ApparelInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Apparel'
+      summary: Adding new product
+      tags:
+      - Admin Product&Offer Management
+  /addcoupon:
+    post:
+      consumes:
+      - application/json
+      description: Addig coupon for users, with a unique code
+      parameters:
+      - description: coupon
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Coupon'
+      responses:
+        "200":
+          description: Success masage
+          schema:
+            type: string
+      summary: Adding coupon by admin
+      tags:
+      - Admin Product&Offer Management
+  /addoffer:
+    post:
+      consumes:
+      - application/json
+      description: Addig coupon for users, with a unique code
+      parameters:
+      - description: offer
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Offer'
+      responses:
+        "200":
+          description: Success masage
+          schema:
+            type: string
+      summary: Adding offer by admin
+      tags:
+      - Admin Product&Offer Management
+  /addticket:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Adding new product of category ticket in database
+      parameters:
+      - description: Ticket Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.TicketInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Ticket'
+      summary: Adding new product
+      tags:
+      - Admin Product&Offer Management
+  /addtocart/{category}/{productid}/{quantity}:
+    post:
+      consumes:
+      - application/json
+      description: Adding product with quantity to cart with product id
+      parameters:
+      - description: Ticket/Apparel
+        in: path
+        name: category
+        required: true
+        type: string
+      - description: Product ID
+        in: path
+        name: productid
+        required: true
+        type: string
+      - description: Product Quantity
+        in: path
+        name: quantity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Add product to cart
+      tags:
+      - User Shopping
+  /addtowishlist/{category}/{productid}:
+    post:
+      consumes:
+      - application/json
+      description: Adding single product to wishlist with product id
+      parameters:
+      - description: Ticket/Apparel
+        in: path
+        name: category
+        required: true
+        type: string
+      - description: Product ID
+        in: path
+        name: productid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Add product to wishlist
+      tags:
+      - User Shopping
+  /adminhome:
+    get:
+      consumes:
+      - application/json
+      description: Admin dashbord
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.AdminDashboard'
+      summary: Admin dashbord
+      tags:
+      - Admin Authentication
+  /adminlogin:
+    post:
+      consumes:
+      - application/json
+      description: Admin login with otp
+      parameters:
+      - description: Admin Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Admin login with otp
+      tags:
+      - Admin Authentication
+  /adminloginpassword:
+    post:
+      consumes:
+      - application/json
+      description: Admin login with password and phone number
+      parameters:
+      - description: Admin Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Admin Login with password
+      tags:
+      - Admin Authentication
+  /adminotpvalidation:
+    post:
+      consumes:
+      - application/json
+      description: Otp Validation for admin login
+      parameters:
+      - description: Admin Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Otp validation
+      tags:
+      - Admin Authentication
+  /appareldetails/{apparelid}:
+    get:
+      consumes:
+      - application/json
+      description: Showing details of a single product and option to adding cart
+      parameters:
+      - description: Apparel ID
+        in: path
+        name: apparelid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Apparel Details
+          schema:
+            $ref: '#/definitions/entity.ApparelDetails'
+      summary: Details of a Apparel
+      tags:
+      - User Shopping
+  /apparels:
+    get:
+      consumes:
+      - application/json
+      description: Showing the available Apparels in the site
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: integer
+      - description: limit no
+        in: query
+        name: limit
+        type: integer
+      - description: Sort by Category
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Apparel List
+          schema:
+            $ref: '#/definitions/entity.Apparel'
+      summary: Apparel List
+      tags:
+      - User Shopping
+  /applycoupon/{code}:
+    post:
+      consumes:
+      - application/json
+      description: applying coupon offer for user cart amount
+      parameters:
+      - description: coupon code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: total amount
+          schema:
+            type: string
+      summary: checking coupon availability and adding offer amount
+      tags:
+      - User Shopping
+  /cancelorder/{orderid}:
+    put:
+      consumes:
+      - application/json
+      description: canceling the order from user side and admin side
+      parameters:
+      - description: Order Id
+        in: path
+        name: orderid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Order Cancelation
+      tags:
+      - User Order
+  /coupons:
+    get:
+      consumes:
+      - application/json
+      description: showing the available coupons and eligibility
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Available coupons
+          schema:
+            $ref: '#/definitions/entity.Coupon'
+      summary: checking coupon availability
+      tags:
+      - User Shopping
+  /deleteapparel/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Soft deleting the data of a product from database in category apparel
+      parameters:
+      - description: product id
+        in: query
+        name: ProductId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Apparel'
+      summary: Delete existing product from database
+      tags:
+      - Admin Product&Offer Management
+  /deleteticket/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Soft deleting the data of a product from database in category ticket
+      parameters:
+      - description: product id
+        in: query
+        name: ProductId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Ticket'
+      summary: Delete existing product from database
+      tags:
+      - Admin Product&Offer Management
+  /editapparel/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Edit data of a product in category apparel
+      parameters:
+      - description: Apparel Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Apparel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Apparel'
+      summary: Edit existing product data
+      tags:
+      - Admin Product&Offer Management
+  /editprofile:
+    put:
+      consumes:
+      - application/json
+      description: Edit User details including address
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.EditUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Edit User Details
+      tags:
+      - User Authentication
+  /editticket/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Edit data of a product in category ticket
+      parameters:
+      - description: Ticket Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Ticket'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Ticket'
+      summary: Edit existing product data
+      tags:
+      - Admin Product&Offer Management
+  /forgotpassword:
+    post:
+      consumes:
+      - application/json
+      description: Option for changing password from user side
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Change password
+      tags:
+      - User Authentication
+  /home:
+    get:
+      consumes:
+      - application/json
+      description: User home with the next navigations
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: User Home
+      tags:
+      - User Shopping
+  /increasequantity/{category}/{productid}:
+    put:
+      consumes:
+      - application/json
+      description: Increasing quantity one by one in the cart
+      parameters:
+      - description: Product Category
+        in: path
+        name: category
+        required: true
+        type: string
+      - description: Product Id
+        in: path
+        name: productid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Added
+          schema:
+            type: string
+      summary: Increase quantity of existing product in cart
+      tags:
+      - User Shopping
+  /loginwithotp:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Login for user with otp
+      parameters:
+      - description: Phone No
+        in: formData
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Login
+      tags:
+      - User Authentication
+  /loginwithpassword:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Login for user with password
+      parameters:
+      - description: Phone No
+        in: formData
+        name: phone
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Login
+      tags:
+      - User Authentication
+  /logout:
+    post:
+      consumes:
+      - application/json
+      description: Deleting cookie from the browser while logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: logout
+      tags:
+      - User Authentication
+  /offer:
+    get:
+      consumes:
+      - application/json
+      description: finding and showing offer for user with respect to user cart
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: offers
+          schema:
+            type: string
+      summary: checking offer availability
+      tags:
+      - User Shopping
+  /orderhistory:
+    get:
+      consumes:
+      - application/json
+      description: showing the history of orders to the user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Order History
+      tags:
+      - User Order
+  /orderreturn/{orderid}:
+    post:
+      consumes:
+      - application/json
+      description: Returning the orders which are delivered to the user
+      parameters:
+      - description: orderid
+        in: path
+        name: orderid
+        required: true
+        type: string
+      - description: wrong product-product quality-late delivery-other
+        in: path
+        name: reason
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success massage
+          schema:
+            type: string
+      summary: Return delivered order
+      tags:
+      - User Order
+  /otpvalidation:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Validating user otp for login validation
+      parameters:
+      - description: Otp
+        in: formData
+        name: otp
+        required: true
+        type: string
+      - description: Key
+        in: formData
+        name: key
+        required: true
+        type: string
+      - description: phone
+        in: formData
+        name: phone
+        type: string
+      - description: resend
+        in: formData
+        name: resend
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Login'
+      summary: Otp Validation
+      tags:
+      - User Authentication
+  /otpvalidationpassword:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Otp validation for changing password
+      parameters:
+      - description: New Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      - description: Otp
+        in: formData
+        name: otp
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Otp validation for password
+      tags:
+      - User Authentication
+  /paymentverification/{sign}/{razorid}/{payid}:
+    post:
+      consumes:
+      - application/json
+      description: After placing order - checking the status of online payment
+      parameters:
+      - description: Payment signature
+        in: path
+        name: sign
+        required: true
+        type: string
+      - description: Razor Order Id
+        in: path
+        name: razorid
+        required: true
+        type: string
+      - description: Razor Payment Id
+        in: path
+        name: payid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Payment Verification
+      tags:
+      - User Order
+  /placeorder/{addressid}/{payment}:
+    post:
+      consumes:
+      - application/json
+      description: Placing order from user side with respect to the payment method
+      parameters:
+      - description: address id
+        in: path
+        name: addressid
+        required: true
+        type: string
+      - description: payment method
+        in: path
+        name: payment
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Place Order
+      tags:
+      - User Order
+  /refund/{orderid}:
+    post:
+      consumes:
+      - application/json
+      description: Transfering the total amount of order to wallet or other methods
+      parameters:
+      - description: order return id
+        in: path
+        name: orderid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success massage
+          schema:
+            type: string
+      summary: Aproving refund by admin
+      tags:
+      - Admin Order Management
+  /registeradmin:
+    post:
+      consumes:
+      - application/json
+      description: Adding new admin to the database
+      parameters:
+      - description: Admin Data
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Admin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Admin'
+      summary: registering new admin
+      tags:
+      - Admin Authentication
+  /removefromcart/{product}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Removing product from the cart for unique and decrese quantity
+        for existing product
+      parameters:
+      - description: Product Name
+        in: path
+        name: product
+        required: true
+        type: string
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Remove Product from cart
+      tags:
+      - User Shopping
+  /salesreportbycategory/{category}/{period}:
+    get:
+      consumes:
+      - application/json
+      description: Showing the report of sales with respect to product category
+      parameters:
+      - description: Category
+        in: path
+        name: category
+        required: true
+        type: string
+      - description: period
+        in: path
+        name: period
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: report
+          schema:
+            type: body
+      summary: Sales report by product category
+      tags:
+      - Admin Order Management
+  /salesreportbydate/{start}/{end}:
+    get:
+      consumes:
+      - application/json
+      description: Showing the sales report with respect to the given date
+      parameters:
+      - description: start date D-M-Y
+        in: path
+        name: start
+        required: true
+        type: string
+      - description: end date D-M-Y
+        in: path
+        name: end
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: report
+          schema:
+            type: body
+      summary: Sales report by date
+      tags:
+      - Admin Order Management
+  /salesreportbyperiod/{period}:
+    get:
+      consumes:
+      - application/json
+      description: Showing the report of sales for last week,month and year
+      parameters:
+      - description: Weekly Monthlt Yearly
+        in: path
+        name: period
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Sales report by time period
+      tags:
+      - Admin Order Management
+  /searchapparel:
+    get:
+      consumes:
+      - application/json
+      description: Showing the available apparels as per user search
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: integer
+      - description: limit no
+        in: query
+        name: limit
+        type: integer
+      - description: Search By Name
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Apparel Data
+          schema:
+            $ref: '#/definitions/entity.Apparel'
+      summary: Search Result
+      tags:
+      - User Shopping
+  /searchticket:
+    get:
+      consumes:
+      - application/json
+      description: Showing the available tickets as per user search
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: integer
+      - description: limit no
+        in: query
+        name: limit
+        type: integer
+      - description: Search By Name
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Ticket Data
+          schema:
+            $ref: '#/definitions/entity.Ticket'
+      summary: Search Result
+      tags:
+      - User Shopping
+  /searchuser:
+    get:
+      consumes:
+      - application/json
+      description: Showing user list for management by searching with name or id
+      parameters:
+      - description: User Name
+        in: query
+        name: name
+        type: string
+      - description: User Id
+        in: query
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: Search user by id or name
+      tags:
+      - Admin User Management
+  /signup:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Adding new user to the database
+      parameters:
+      - description: User Data
+        in: body
+        name: userInput
+        required: true
+        schema:
+          $ref: '#/definitions/models.Signup'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: signup
+      tags:
+      - User Authentication
+  /signupotpvalidation:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Validating user otp for signup
+      parameters:
+      - description: Twilio Key
+        in: formData
+        name: key
+        required: true
+        type: string
+      - description: Otp
+        in: formData
+        name: otp
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Sign Up Otp Validation
+      tags:
+      - User Authentication
+  /signupwithotp:
+    post:
+      consumes:
+      - application/json
+      description: Adding new user to the database
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.Signup'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: signup with opt validation
+      tags:
+      - User Authentication
+  /sortorders:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Showing the sorted list of orders in admin panel
+      parameters:
+      - description: Status
+        in: formData
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: sorted orders
+          schema:
+            $ref: '#/definitions/entity.Order'
+      summary: Sorting orders by order status
+      tags:
+      - Admin Order Management
+  /sortuser:
+    get:
+      consumes:
+      - application/json
+      description: Showing user list for management by sorting with permisiion
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: string
+      - description: limit no
+        in: query
+        name: limit
+        type: string
+      - description: true/false
+        in: query
+        name: permission
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: User list by permission
+      tags:
+      - Admin User Management
+  /ticketdetails/{ticketid}:
+    get:
+      consumes:
+      - application/json
+      description: Showing details of a single product and option to adding cart
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: ticketid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Ticket Details
+          schema:
+            $ref: '#/definitions/entity.TicketDetails'
+      summary: Details of a Ticket
+      tags:
+      - User Shopping
+  /tickets:
+    get:
+      consumes:
+      - application/json
+      description: Showing the available tickets in the site
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: integer
+      - description: limit no
+        in: query
+        name: limit
+        type: integer
+      - description: Sort by location
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Ticket Data
+          schema:
+            $ref: '#/definitions/entity.Ticket'
+      summary: Tickets List
+      tags:
+      - User Shopping
+  /updateorder/{orderid}/{status}:
+    put:
+      consumes:
+      - application/json
+      description: Updating the order status by admin
+      parameters:
+      - description: Order Id
+        in: path
+        name: orderid
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success massage
+          schema:
+            type: string
+      summary: Update order status
+      tags:
+      - Admin Order Management
+  /updatereturn/{returnid}/{status}/{refund}:
+    post:
+      consumes:
+      - application/json
+      description: Updating the retunr status by admin and implimenting refund
+      parameters:
+      - description: Return Id
+        in: path
+        name: returnid
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      - description: refund method -wallet -account
+        in: path
+        name: refund
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: updated succesfuly
+          schema:
+            type: string
+      summary: Updating return status and refund
+      tags:
+      - Admin Order Management
+  /usercart:
+    get:
+      consumes:
+      - application/json
+      description: Showing user cart
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User Cart
+          schema:
+            $ref: '#/definitions/entity.Cart'
+      summary: User Cart
+      tags:
+      - User Shopping
+  /usercartlist:
+    get:
+      consumes:
+      - application/json
+      description: Showing the products in user cart
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Cart List
+          schema:
+            $ref: '#/definitions/entity.CartItem'
+      summary: Cart List
+      tags:
+      - User Shopping
+  /userdetails:
+    get:
+      consumes:
+      - application/json
+      description: User profile with adress and user details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: User Details
+      tags:
+      - User Authentication
+  /usermanagement:
+    get:
+      consumes:
+      - application/json
+      description: Showing user list for management by admin
+      parameters:
+      - description: page no
+        in: query
+        name: page
+        type: string
+      - description: limit no
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.User'
+      summary: User list
+      tags:
+      - Admin User Management
+  /userpermission/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Toggling user permission for block/unblock
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Admin'
+      summary: block/unblock user
+      tags:
+      - Admin User Management
+  /userwishlist:
+    get:
+      consumes:
+      - application/json
+      description: Showing the products in user wishlist
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Wishlist
+          schema:
+            $ref: '#/definitions/entity.Wishlist'
+      summary: Wish List
+      tags:
+      - User Shopping
+schemes:
+- http
+securityDefinitions:
+  JWT:
+    in: header
+    name: token
+    type: apiKey
+swagger: "2.0"

@@ -1,0 +1,2491 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API for ecommerce website",
+        "title": "Zog_festiv eCommerce API",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/addaddress": {
+            "post": {
+                "description": "Add new address to the database with user id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Add Address",
+                "parameters": [
+                    {
+                        "description": "User Address",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Address"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/addapparel": {
+            "post": {
+                "description": "Adding new product of category apparel in database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Adding new product",
+                "parameters": [
+                    {
+                        "description": "Apparel Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.ApparelInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                }
+            }
+        },
+        "/addcoupon": {
+            "post": {
+                "description": "Addig coupon for users, with a unique code",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Adding coupon by admin",
+                "parameters": [
+                    {
+                        "description": "coupon",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Coupon"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success masage",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/addoffer": {
+            "post": {
+                "description": "Addig coupon for users, with a unique code",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Adding offer by admin",
+                "parameters": [
+                    {
+                        "description": "offer",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Offer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success masage",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/addticket": {
+            "post": {
+                "description": "Adding new product of category ticket in database",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Adding new product",
+                "parameters": [
+                    {
+                        "description": "Ticket Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.TicketInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/addtocart/{category}/{productid}/{quantity}": {
+            "post": {
+                "description": "Adding product with quantity to cart with product id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Add product to cart",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Ticket/Apparel",
+                        "name": "category",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Product ID",
+                        "name": "productid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Product Quantity",
+                        "name": "quantity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/addtowishlist/{category}/{productid}": {
+            "post": {
+                "description": "Adding single product to wishlist with product id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Add product to wishlist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Ticket/Apparel",
+                        "name": "category",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Product ID",
+                        "name": "productid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/adminhome": {
+            "get": {
+                "description": "Admin dashbord",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Authentication"
+                ],
+                "summary": "Admin dashbord",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.AdminDashboard"
+                        }
+                    }
+                }
+            }
+        },
+        "/adminlogin": {
+            "post": {
+                "description": "Admin login with otp",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Authentication"
+                ],
+                "summary": "Admin login with otp",
+                "parameters": [
+                    {
+                        "description": "Admin Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/adminloginpassword": {
+            "post": {
+                "description": "Admin login with password and phone number",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Authentication"
+                ],
+                "summary": "Admin Login with password",
+                "parameters": [
+                    {
+                        "description": "Admin Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/adminotpvalidation": {
+            "post": {
+                "description": "Otp Validation for admin login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Authentication"
+                ],
+                "summary": "Otp validation",
+                "parameters": [
+                    {
+                        "description": "Admin Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/appareldetails/{apparelid}": {
+            "get": {
+                "description": "Showing details of a single product and option to adding cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Details of a Apparel",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Apparel ID",
+                        "name": "apparelid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Apparel Details",
+                        "schema": {
+                            "$ref": "#/definitions/entity.ApparelDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/apparels": {
+            "get": {
+                "description": "Showing the available Apparels in the site",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Apparel List",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by Category",
+                        "name": "sort",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Apparel List",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                }
+            }
+        },
+        "/applycoupon/{code}": {
+            "post": {
+                "description": "applying coupon offer for user cart amount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "checking coupon availability and adding offer amount",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "coupon code",
+                        "name": "code",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "total amount",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/cancelorder/{orderid}": {
+            "put": {
+                "description": "canceling the order from user side and admin side",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Order"
+                ],
+                "summary": "Order Cancelation",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Order Id",
+                        "name": "orderid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/coupons": {
+            "get": {
+                "description": "showing the available coupons and eligibility",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "checking coupon availability",
+                "responses": {
+                    "200": {
+                        "description": "Available coupons",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Coupon"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteapparel/{id}": {
+            "delete": {
+                "description": "Soft deleting the data of a product from database in category apparel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Delete existing product from database",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "product id",
+                        "name": "ProductId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteticket/{id}": {
+            "delete": {
+                "description": "Soft deleting the data of a product from database in category ticket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Delete existing product from database",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "product id",
+                        "name": "ProductId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/editapparel/{id}": {
+            "put": {
+                "description": "Edit data of a product in category apparel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Edit existing product data",
+                "parameters": [
+                    {
+                        "description": "Apparel Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                }
+            }
+        },
+        "/editprofile": {
+            "put": {
+                "description": "Edit User details including address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Edit User Details",
+                "parameters": [
+                    {
+                        "description": "User Data",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EditUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/editticket/{id}": {
+            "put": {
+                "description": "Edit data of a product in category ticket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Product\u0026Offer Management"
+                ],
+                "summary": "Edit existing product data",
+                "parameters": [
+                    {
+                        "description": "Ticket Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/forgotpassword": {
+            "post": {
+                "description": "Option for changing password from user side",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Change password",
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/home": {
+            "get": {
+                "description": "User home with the next navigations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "User Home",
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/increasequantity/{category}/{productid}": {
+            "put": {
+                "description": "Increasing quantity one by one in the cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Increase quantity of existing product in cart",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product Category",
+                        "name": "category",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Product Id",
+                        "name": "productid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Added",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/loginwithotp": {
+            "post": {
+                "description": "Login for user with otp",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Phone No",
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/loginwithpassword": {
+            "post": {
+                "description": "Login for user with password",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Phone No",
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Password",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "description": "Deleting cookie from the browser while logout",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/offer": {
+            "get": {
+                "description": "finding and showing offer for user with respect to user cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "checking offer availability",
+                "responses": {
+                    "200": {
+                        "description": "offers",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderhistory": {
+            "get": {
+                "description": "showing the history of orders to the user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Order"
+                ],
+                "summary": "Order History",
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderreturn/{orderid}": {
+            "post": {
+                "description": "Returning the orders which are delivered to the user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Order"
+                ],
+                "summary": "Return delivered order",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "orderid",
+                        "name": "orderid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "wrong product-product quality-late delivery-other",
+                        "name": "reason",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success massage",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/otpvalidation": {
+            "post": {
+                "description": "Validating user otp for login validation",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Otp Validation",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Otp",
+                        "name": "otp",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "phone",
+                        "name": "phone",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "resend",
+                        "name": "resend",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/otpvalidationpassword": {
+            "post": {
+                "description": "Otp validation for changing password",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Otp validation for password",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "New Password",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Otp",
+                        "name": "otp",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/paymentverification/{sign}/{razorid}/{payid}": {
+            "post": {
+                "description": "After placing order - checking the status of online payment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Order"
+                ],
+                "summary": "Payment Verification",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Payment signature",
+                        "name": "sign",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Razor Order Id",
+                        "name": "razorid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Razor Payment Id",
+                        "name": "payid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/placeorder/{addressid}/{payment}": {
+            "post": {
+                "description": "Placing order from user side with respect to the payment method",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Order"
+                ],
+                "summary": "Place Order",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address id",
+                        "name": "addressid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "payment method",
+                        "name": "payment",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/refund/{orderid}": {
+            "post": {
+                "description": "Transfering the total amount of order to wallet or other methods",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Aproving refund by admin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "order return id",
+                        "name": "orderid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success massage",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/registeradmin": {
+            "post": {
+                "description": "Adding new admin to the database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Authentication"
+                ],
+                "summary": "registering new admin",
+                "parameters": [
+                    {
+                        "description": "Admin Data",
+                        "name": "admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Admin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Admin"
+                        }
+                    }
+                }
+            }
+        },
+        "/removefromcart/{product}/{id}": {
+            "delete": {
+                "description": "Removing product from the cart for unique and decrese quantity for existing product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Remove Product from cart",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product Name",
+                        "name": "product",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/salesreportbycategory/{category}/{period}": {
+            "get": {
+                "description": "Showing the report of sales with respect to product category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Sales report by product category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Category",
+                        "name": "category",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "period",
+                        "name": "period",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "report",
+                        "schema": {
+                            "type": "body"
+                        }
+                    }
+                }
+            }
+        },
+        "/salesreportbydate/{start}/{end}": {
+            "get": {
+                "description": "Showing the sales report with respect to the given date",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Sales report by date",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "start date D-M-Y",
+                        "name": "start",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "end date D-M-Y",
+                        "name": "end",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "report",
+                        "schema": {
+                            "type": "body"
+                        }
+                    }
+                }
+            }
+        },
+        "/salesreportbyperiod/{period}": {
+            "get": {
+                "description": "Showing the report of sales for last week,month and year",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Sales report by time period",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Weekly Monthlt Yearly",
+                        "name": "period",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/searchapparel": {
+            "get": {
+                "description": "Showing the available apparels as per user search",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Search Result",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Search By Name",
+                        "name": "search",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Apparel Data",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Apparel"
+                        }
+                    }
+                }
+            }
+        },
+        "/searchticket": {
+            "get": {
+                "description": "Showing the available tickets as per user search",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Search Result",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Search By Name",
+                        "name": "search",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ticket Data",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/searchuser": {
+            "get": {
+                "description": "Showing user list for management by searching with name or id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin User Management"
+                ],
+                "summary": "Search user by id or name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User Name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "User Id",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "description": "Adding new user to the database",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "signup",
+                "parameters": [
+                    {
+                        "description": "User Data",
+                        "name": "userInput",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/signupotpvalidation": {
+            "post": {
+                "description": "Validating user otp for signup",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "Sign Up Otp Validation",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Twilio Key",
+                        "name": "key",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Otp",
+                        "name": "otp",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/signupwithotp": {
+            "post": {
+                "description": "Adding new user to the database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "signup with opt validation",
+                "parameters": [
+                    {
+                        "description": "User Data",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/sortorders": {
+            "post": {
+                "description": "Showing the sorted list of orders in admin panel",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Sorting orders by order status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Status",
+                        "name": "status",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "sorted orders",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Order"
+                        }
+                    }
+                }
+            }
+        },
+        "/sortuser": {
+            "get": {
+                "description": "Showing user list for management by sorting with permisiion",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin User Management"
+                ],
+                "summary": "User list by permission",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true/false",
+                        "name": "permission",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/ticketdetails/{ticketid}": {
+            "get": {
+                "description": "Showing details of a single product and option to adding cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Details of a Ticket",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Ticket ID",
+                        "name": "ticketid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ticket Details",
+                        "schema": {
+                            "$ref": "#/definitions/entity.TicketDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/tickets": {
+            "get": {
+                "description": "Showing the available tickets in the site",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Tickets List",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by location",
+                        "name": "sort",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ticket Data",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Ticket"
+                        }
+                    }
+                }
+            }
+        },
+        "/updateorder/{orderid}/{status}": {
+            "put": {
+                "description": "Updating the order status by admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Update order status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Order Id",
+                        "name": "orderid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success massage",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/updatereturn/{returnid}/{status}/{refund}": {
+            "post": {
+                "description": "Updating the retunr status by admin and implimenting refund",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin Order Management"
+                ],
+                "summary": "Updating return status and refund",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Return Id",
+                        "name": "returnid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "refund method -wallet -account",
+                        "name": "refund",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "updated succesfuly",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/usercart": {
+            "get": {
+                "description": "Showing user cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "User Cart",
+                "responses": {
+                    "200": {
+                        "description": "User Cart",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Cart"
+                        }
+                    }
+                }
+            }
+        },
+        "/usercartlist": {
+            "get": {
+                "description": "Showing the products in user cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Cart List",
+                "responses": {
+                    "200": {
+                        "description": "Cart List",
+                        "schema": {
+                            "$ref": "#/definitions/entity.CartItem"
+                        }
+                    }
+                }
+            }
+        },
+        "/userdetails": {
+            "get": {
+                "description": "User profile with adress and user details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Authentication"
+                ],
+                "summary": "User Details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/usermanagement": {
+            "get": {
+                "description": "Showing user list for management by admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin User Management"
+                ],
+                "summary": "User list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "page no",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "limit no",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/userpermission/{id}": {
+            "post": {
+                "description": "Toggling user permission for block/unblock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin User Management"
+                ],
+                "summary": "block/unblock user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Admin"
+                        }
+                    }
+                }
+            }
+        },
+        "/userwishlist": {
+            "get": {
+                "description": "Showing the products in user wishlist",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Wish List",
+                "responses": {
+                    "200": {
+                        "description": "Wishlist",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Wishlist"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity.Address": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "house": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "pincode": {
+                    "type": "integer"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Admin": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "adminname": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.AdminDashboard": {
+            "type": "object",
+            "properties": {
+                "averageordervalue": {
+                    "type": "integer"
+                },
+                "newusers": {
+                    "type": "integer"
+                },
+                "pendingorders": {
+                    "type": "integer"
+                },
+                "returnorders": {
+                    "type": "integer"
+                },
+                "stocklesscategory": {
+                    "type": "string"
+                },
+                "totalorders": {
+                    "type": "integer"
+                },
+                "totalproducts": {
+                    "type": "integer"
+                },
+                "totalquery": {
+                    "type": "integer"
+                },
+                "totalrevenue": {
+                    "type": "integer"
+                },
+                "totalusers": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.Apparel": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "imageurl": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "subcategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.ApparelDetails": {
+            "type": "object",
+            "properties": {
+                "apparelid": {
+                    "type": "integer"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.ApparelInput": {
+            "type": "object",
+            "properties": {
+                "apparelid": {
+                    "type": "integer"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "imageurl": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "productCategory": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "string"
+                },
+                "subcategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Cart": {
+            "type": "object",
+            "properties": {
+                "apparelquantity": {
+                    "type": "integer"
+                },
+                "offerprice": {
+                    "type": "integer"
+                },
+                "ticketquantity": {
+                    "type": "integer"
+                },
+                "totalprice": {
+                    "type": "number"
+                }
+            }
+        },
+        "entity.CartItem": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productid": {
+                    "type": "integer"
+                },
+                "productname": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.Coupon": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "usage_limit": {
+                    "type": "integer"
+                },
+                "used_count": {
+                    "type": "integer"
+                },
+                "valid_from": {
+                    "type": "string"
+                },
+                "valid_until": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Login": {
+            "type": "object",
+            "required": [
+                "password",
+                "phone"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Offer": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "minprice": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "usage_limit": {
+                    "type": "integer"
+                },
+                "valid_from": {
+                    "type": "string"
+                },
+                "valid_until": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Order": {
+            "type": "object",
+            "properties": {
+                "adressid": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "paymentid": {
+                    "type": "string"
+                },
+                "paymentmethod": {
+                    "type": "string"
+                },
+                "paymentstatus": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "number"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.Ticket": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "imageurl": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "subcategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.TicketDetails": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "ticketid": {
+                    "type": "integer"
+                },
+                "venue": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.TicketInput": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "imageurl": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "productCategory": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "subcategory": {
+                    "type": "string"
+                },
+                "ticketid": {
+                    "type": "integer"
+                },
+                "venue": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.User": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstname",
+                "lastname",
+                "password",
+                "phone"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "wallet": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.Wishlist": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "productid": {
+                    "type": "integer"
+                },
+                "productname": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EditUser": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstname",
+                "lastname"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Signup": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "name": "token",
+            "in": "header"
+        }
+    }
+}
