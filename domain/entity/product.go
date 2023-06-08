@@ -15,7 +15,7 @@ type Ticket struct {
 	Location    string    `json:"location"`
 	ImageURL    string    `json:"imageurl"`
 	Removed     bool      `json:"-" gorm:"default false"`
-	Category    string    `json:"category"`
+	Category    string    `json:"category" gorm:"default ticket"`
 	SubCategory string    `json:"subcategory"`
 	AdminId     int       `json:"-"`
 }
