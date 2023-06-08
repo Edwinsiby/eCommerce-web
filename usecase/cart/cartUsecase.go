@@ -28,7 +28,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 		}
 		cartId = cartid
 	} else {
-		cartId = userCart.ID
+		cartId = int(userCart.ID)
 	}
 
 	if product == "ticket" {
