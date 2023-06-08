@@ -13,7 +13,6 @@
         },
         "version": "1.0"
     },
-    "host": "www.zogfestiv.store",
     "basePath": "/",
     "paths": {
         "/addaddress": {
