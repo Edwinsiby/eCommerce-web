@@ -1542,7 +1542,7 @@ const docTemplate = `{
             "post": {
                 "description": "Adding new user to the database",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
@@ -2444,7 +2444,6 @@ const docTemplate = `{
                 "email",
                 "firstname",
                 "lastname",
-                "password",
                 "phone"
             ],
             "properties": {
@@ -2455,9 +2454,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "lastname": {
-                    "type": "string"
-                },
-                "password": {
                     "type": "string"
                 },
                 "phone": {

@@ -266,8 +266,6 @@ definitions:
         type: string
       lastname:
         type: string
-      password:
-        type: string
       phone:
         type: string
       wallet:
@@ -276,7 +274,6 @@ definitions:
     - email
     - firstname
     - lastname
-    - password
     - phone
     type: object
   entity.Wishlist:
@@ -1327,7 +1324,7 @@ paths:
   /signup:
     post:
       consumes:
-      - multipart/form-data
+      - application/json
       description: Adding new user to the database
       parameters:
       - description: User Data

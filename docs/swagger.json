@@ -1538,7 +1538,7 @@
             "post": {
                 "description": "Adding new user to the database",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
@@ -2440,7 +2440,6 @@
                 "email",
                 "firstname",
                 "lastname",
-                "password",
                 "phone"
             ],
             "properties": {
@@ -2451,9 +2450,6 @@
                     "type": "string"
                 },
                 "lastname": {
-                    "type": "string"
-                },
-                "password": {
                     "type": "string"
                 },
                 "phone": {
