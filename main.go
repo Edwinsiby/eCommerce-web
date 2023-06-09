@@ -37,7 +37,7 @@ import (
 //	@host			www.zogfestiv.store
 //	@BasePath		/
 
-// @schemes	http
+//	@schemes	http
 func main() {
 	db, err := infrastructure.ConnectToDB()
 	if err != nil {
