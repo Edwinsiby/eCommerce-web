@@ -209,8 +209,9 @@ func (uh *UserHandler) Home(c *gin.Context) {
 //	@Tags			User Shopping
 //	@Accept			json
 //	@Produce		json
-//	@Param			user	body		entity.Address	true	"User Address"
-//	@Success		200		{string}	string			"Success message"
+//	@Param			user	body	entity.Address	true	"User Address"
+//	@Schema(hidden	= true)  id
+//	@Success		200	{string}	string	"Success message"
 //	@Router			/addaddress [post]
 func (uh *UserHandler) AddAddress(c *gin.Context) {
 	userID, _ := c.Get("userID")
