@@ -31,7 +31,7 @@ func NewUserHandler(UserUsecase *usecase.UserUsecase, ProductUsecase *productuse
 //	@Summary		signup
 //	@Description	Adding new user to the database
 //	@Tags			User Authentication
-//	@Accept			multipart/form-data
+//	@Accept			json
 //	@Produce		json
 //	@Param			userInput	body		models.Signup	true	"User Data"
 //	@Success		200			{object}	entity.User
