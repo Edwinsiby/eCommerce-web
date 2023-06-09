@@ -309,6 +309,7 @@ func (ct *AdminHandler) CreateTicket(c *gin.Context) {
 		Date:        input.Date,
 		Location:    input.Location,
 		ImageURL:    input.ImageURL,
+		Category:    input.Category,
 		SubCategory: input.Category,
 		AdminId:     adminId,
 	}

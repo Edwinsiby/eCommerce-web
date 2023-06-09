@@ -68,6 +68,7 @@ func (pu ProductUsecase) ExecuteCreateTicket(ticket entity.Ticket) (int, error) 
 		Date:     ticket.Date,
 		Location: ticket.Location,
 		ImageURL: ticket.ImageURL,
+		Category: ticket.Category,
 		AdminId:  ticket.AdminId,
 	}
 	ticketId, err1 := pu.productRepo.CreateTicket(newTicket)
