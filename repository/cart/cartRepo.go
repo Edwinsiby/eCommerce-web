@@ -71,12 +71,12 @@ func (cr CartRepository) RemoveCartItem(cartItem *entity.CartItem) error {
 
 func (cr *CartRepository) GetByName(productName string, cartId int) (*entity.CartItem, error) {
 	var cartItem entity.CartItem
-	result := cr.db.Where("product_name=? AND cart_id = ?", productName, cartId).First(&cartItem)
+	result := cr.db.Where("product_name = ? AND cart_id = ?", productName, cartId).Find(&cartItem)
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-			return nil, result.Error
+			return nil, gorm.ErrRecordNotFound
 		}
-		return nil, errors.New("Product not exsisted")
+		return nil, result.Error
 	}
 	return &cartItem, nil
 }
