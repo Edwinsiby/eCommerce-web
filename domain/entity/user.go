@@ -11,7 +11,7 @@ type User struct {
 	LastName   string `json:"lastname" bson:"lastname" binding:"required"`
 	Email      string `json:"email" bson:"email" binding:"required"`
 	Phone      string `json:"phone" bson:"phone" binding:"required"`
-	Password   string `json:"password" bson:"password" binding:"required"`
+	Password   string `json:"-" bson:"password" binding:"required"`
 	Wallet     int    `json:"wallet"`
 	Permission bool   `gorm:"not null;default:true" json:"-"`
 }
