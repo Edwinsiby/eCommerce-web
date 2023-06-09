@@ -15,14 +15,14 @@ func NewCartRepository(db *gorm.DB) *CartRepository {
 	return &CartRepository{db}
 }
 
-func (cr *CartRepository) Create(userid int) (int, error) {
+func (cr *CartRepository) Create(userid int) (*entity.Cart, error) {
 	cart := &entity.Cart{
 		UserId: userid,
 	}
 	if err := cr.db.Create(cart).Error; err != nil {
-		return 0, err
+		return nil, err
 	}
-	return int(cart.ID), nil
+	return cart, nil
 
 }
 

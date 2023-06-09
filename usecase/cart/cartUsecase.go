@@ -20,13 +20,12 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 	var userCart *entity.Cart
 	var cartId int
 	userCart, err := cu.cartRepo.GetByUserID(userid)
-
 	if err != nil {
-		cartid, err1 := cu.cartRepo.Create(userid)
+		cart, err1 := cu.cartRepo.Create(userid)
 		if err1 != nil {
 			return errors.New("Failed to create user cart")
 		}
-		cartId = cartid
+		userCart = cart
 	} else {
 		cartId = int(userCart.ID)
 	}
@@ -58,13 +57,8 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 				return errors.New("error updating existing cartitem")
 			}
 		}
-		if userCart.TotalPrice == 0 {
-			userCart.TotalPrice = cartItem.Price * float64(quantity)
-			userCart.TicketQuantity = quantity
-		} else {
-			userCart.TotalPrice += cartItem.Price * float64(quantity)
-			userCart.TicketQuantity += quantity
-		}
+		userCart.TotalPrice += cartItem.Price * float64(quantity)
+		userCart.TicketQuantity += quantity
 
 	} else if product == "apparel" {
 		apparel, err := cu.productRepo.GetApparelByID(id)
@@ -92,13 +86,8 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 				return errors.New("error updating existing cartitem")
 			}
 		}
-		if userCart.TotalPrice == 0 {
-			userCart.TotalPrice = cartItem.Price * float64(quantity)
-			userCart.ApparelQuantity = quantity
-		} else {
-			userCart.TotalPrice += cartItem.Price * float64(quantity)
-			userCart.ApparelQuantity += quantity
-		}
+		userCart.TotalPrice += cartItem.Price * float64(quantity)
+		userCart.ApparelQuantity += quantity
 	}
 	err1 := cu.cartRepo.UpdateCart(userCart)
 	if err1 != nil {
