@@ -71,9 +71,9 @@ func (pu ProductUsecase) ExecuteCreateTicket(ticket entity.Ticket) (int, error) 
 		Category: ticket.Category,
 		AdminId:  ticket.AdminId,
 	}
-	ticketId, err1 := pu.productRepo.CreateTicket(newTicket)
-	if err1 != nil {
-		return 0, err1
+	ticketId, err := pu.productRepo.CreateTicket(newTicket)
+	if err != nil {
+		return 0, err
 	} else {
 		return ticketId, nil
 	}
@@ -88,7 +88,7 @@ func (pu *ProductUsecase) ExecuteCreateTicketDetails(details entity.TicketDetail
 	}
 	err := pu.productRepo.CreateTicketDetails(ticketDetails)
 	if err != nil {
-		return err
+		return errors.New("Creating Details failed")
 	} else {
 		return nil
 	}

@@ -154,7 +154,7 @@ const docTemplate = `{
             "post": {
                 "description": "Adding new product of category ticket in database",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
@@ -166,7 +166,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Ticket Data",
-                        "name": "admin",
+                        "name": "ticket",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -2498,7 +2498,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "",
+	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
 	Title:            "Zog_festiv eCommerce API",

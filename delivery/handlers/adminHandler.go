@@ -290,10 +290,9 @@ func (tp *AdminHandler) TogglePermission(c *gin.Context) {
 //	@Summary		Adding new product
 //	@Description	Adding new product of category ticket in database
 //	@Tags			Admin Product&Offer Management
-//	@Accept			multipart/form-data
+//	@Accept			json
 //	@Produce		json
-//	@Param			admin	body		entity.TicketInput	true	"Ticket Data"
-//
+//	@param			ticket	body		entity.TicketInput	true	"Ticket Data"
 //	@Success		200		{object}	entity.Ticket
 //	@Router			/addticket [post]
 func (ct *AdminHandler) CreateTicket(c *gin.Context) {
@@ -302,6 +301,7 @@ func (ct *AdminHandler) CreateTicket(c *gin.Context) {
 	var input entity.TicketInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 	ticket := entity.Ticket{
 		Name:        input.Name,
@@ -309,15 +309,15 @@ func (ct *AdminHandler) CreateTicket(c *gin.Context) {
 		Date:        input.Date,
 		Location:    input.Location,
 		ImageURL:    input.ImageURL,
-		Category:    input.Category,
+		Category:    "ticket",
 		SubCategory: input.Category,
 		AdminId:     adminId,
 	}
 	ticketId, err := ct.ProductUsecase.ExecuteCreateTicket(ticket)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	} else {
-		c.JSON(http.StatusOK, gin.H{"success": "ticket added succesfully"})
 		ticketDetails := entity.TicketDetails{
 			TicketId:    ticketId,
 			Description: input.Description,
@@ -326,22 +326,20 @@ func (ct *AdminHandler) CreateTicket(c *gin.Context) {
 		err := ct.ProductUsecase.ExecuteCreateTicketDetails(ticketDetails)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"success": "ticket details added succesfully"})
+			return
 		}
 		inventory := entity.Inventory{
 			ProductId:       ticketId,
-			ProductCategory: input.Category,
+			ProductCategory: "ticket",
 			Quantity:        input.Quantity,
 		}
 		err = ct.ProductUsecase.ExecuteCreateInventory(inventory)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"success": "ticket inventory created succesfully"})
+			return
 		}
 	}
-
+	c.JSON(http.StatusOK, gin.H{"success": "ticket added succesfully"})
 }
 
 // Edit Ticket  godoc

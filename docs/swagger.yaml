@@ -316,6 +316,7 @@ definitions:
       phone:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
   description: API for ecommerce website
@@ -412,12 +413,12 @@ paths:
   /addticket:
     post:
       consumes:
-      - multipart/form-data
+      - application/json
       description: Adding new product of category ticket in database
       parameters:
       - description: Ticket Data
         in: body
-        name: admin
+        name: ticket
         required: true
         schema:
           $ref: '#/definitions/entity.TicketInput'

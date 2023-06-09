@@ -13,6 +13,7 @@
         },
         "version": "1.0"
     },
+    "host": "localhost:8080",
     "basePath": "/",
     "paths": {
         "/addaddress": {
@@ -149,7 +150,7 @@
             "post": {
                 "description": "Adding new product of category ticket in database",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
@@ -161,7 +162,7 @@
                 "parameters": [
                     {
                         "description": "Ticket Data",
-                        "name": "admin",
+                        "name": "ticket",
                         "in": "body",
                         "required": true,
                         "schema": {
