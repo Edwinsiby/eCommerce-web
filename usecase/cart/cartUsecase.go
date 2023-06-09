@@ -226,7 +226,7 @@ func (c *CartUsecase) ExecuteAddToWishlist(catergory string, productId int, user
 		if err != nil {
 			return errors.New("Apparel not found")
 		}
-		exsisting, err := c.cartRepo.GetApparelFromWishlist(apparel.Category, apparel.ID)
+		exsisting, err := c.cartRepo.GetApparelFromWishlist(apparel.Category, apparel.ID, userId)
 		if err != nil {
 			return errors.New("Error finding exsisting product")
 		}
@@ -244,6 +244,37 @@ func (c *CartUsecase) ExecuteAddToWishlist(catergory string, productId int, user
 			if err != nil {
 				return errors.New("Product adding to wishlist failed")
 			}
+		}
+	}
+	return nil
+}
+
+func (c *CartUsecase) ExecuteRemoveFromWishlist(category string, productId int, userId int) error {
+	if category == "ticket" {
+		exsisting, err := c.cartRepo.GetTicketFromWishlist(category, productId, userId)
+		if err != nil {
+			return errors.New("Error finding exsisting product")
+		}
+		if exsisting == true {
+			err = c.cartRepo.RemoveFromWishlist(category, productId, userId)
+			if err != nil {
+				return errors.New("Can't remove from wishlist")
+			}
+		} else {
+			return errors.New("Ticket not found")
+		}
+	} else {
+		exsisting, err := c.cartRepo.GetApparelFromWishlist(category, productId, userId)
+		if err != nil {
+			return errors.New("Error finding exsisting product")
+		}
+		if exsisting == true {
+			err = c.cartRepo.RemoveFromWishlist(category, productId, userId)
+			if err != nil {
+				return errors.New("Can't remove from wishlist")
+			}
+		} else {
+			return errors.New("Apparel not found")
 		}
 	}
 	return nil

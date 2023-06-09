@@ -142,9 +142,9 @@ func (c *CartRepository) AddApparelToWishlist(apparel *entity.Wishlist) error {
 	return nil
 }
 
-func (c *CartRepository) GetApparelFromWishlist(category string, id int) (bool, error) {
+func (c *CartRepository) GetApparelFromWishlist(category string, id int, userId int) (bool, error) {
 	var apparel entity.Wishlist
-	result := c.db.Where(&entity.Wishlist{Category: category, ProductId: id}).First(&apparel)
+	result := c.db.Where(&entity.Wishlist{UserId: userId, Category: category, ProductId: id}).First(&apparel)
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			return false, nil
@@ -164,4 +164,13 @@ func (c *CartRepository) GetWishlist(userId int) (*[]entity.Wishlist, error) {
 		return nil, result.Error
 	}
 	return &wishlist, nil
+}
+
+func (c *CartRepository) RemoveFromWishlist(category string, id, userId int) error {
+	product := entity.Wishlist{
+		ProductId: id,
+		UserId:    userId,
+		Category:  category,
+	}
+	return c.db.Where("user_id=?", userId).Delete(&product).Error
 }

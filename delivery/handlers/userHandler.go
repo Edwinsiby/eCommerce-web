@@ -734,6 +734,35 @@ func (uh *UserHandler) RemoveFromCart(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Product removed from cart successfully"})
 }
 
+// RemoveFromWishlist godoc
+//
+//	@Summary		Remove Product from wishlist
+//	@Description	Removing product from the user wishlist
+//	@Tags			User Shopping
+//	@Accept			json
+//	@Produce		json
+//	@Param			product	path		string	true	"ticket/apparel"
+//	@Param			id		path		int		true	"Product ID"
+//	@Success		200		{string}	string	"Success message"
+//	@Router			/removefromwishlist/{product}/{id} [delete]
+func (uh *UserHandler) RemoveFromWishlist(c *gin.Context) {
+	userID, _ := c.Get("userID")
+	userId := userID.(int)
+	id := c.Param("id")
+	product := c.Param("product")
+	Id, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "str conversion failed"})
+		return
+	}
+	err = uh.CartUsecase.ExecuteRemoveFromWishlist(product, Id, userId)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Product removed from wishlist successfully"})
+}
+
 // Wishlist    godoc
 //
 //	@Summary		Wish List
