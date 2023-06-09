@@ -220,15 +220,8 @@ func (uh *UserHandler) AddAddress(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	userAddress := entity.Address{
-		UserId: userId,
-	}
-	err := copier.Copy(&userAddress, &address)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	err = uh.UserUsecase.ExecuteAddAddress(&userAddress)
+	address.UserId = userId
+	err := uh.UserUsecase.ExecuteAddAddress(&address)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
