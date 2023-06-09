@@ -316,7 +316,7 @@ definitions:
       phone:
         type: string
     type: object
-host: localhost:8080
+host: www.zogfestiv.store
 info:
   contact: {}
   description: API for ecommerce website
