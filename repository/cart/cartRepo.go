@@ -76,7 +76,7 @@ func (cr *CartRepository) GetByName(productName string, cartId int) (*entity.Car
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			return nil, result.Error
 		}
-		return nil, result.Error
+		return nil, errors.New("Product not exsisted")
 	}
 	return &cartItem, nil
 }
