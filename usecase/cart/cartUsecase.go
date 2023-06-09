@@ -44,8 +44,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 			ProductName: ticket.Name,
 			Price:       float64(ticket.Price),
 		}
-		existingTicket, err := cu.cartRepo.GetByName(ticket.Name, cartId)
-
+		existingTicket, _ := cu.cartRepo.GetByName(ticket.Name, cartId)
 		if existingTicket == nil {
 			err = cu.cartRepo.CreateCartItem(cartItem)
 			if err != nil {
