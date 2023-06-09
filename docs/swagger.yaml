@@ -1145,6 +1145,32 @@ paths:
       summary: Remove Product from cart
       tags:
       - User Shopping
+  /removefromwishlist/{product}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Removing product from the user wishlist
+      parameters:
+      - description: ticket/apparel
+        in: path
+        name: product
+        required: true
+        type: string
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success message
+          schema:
+            type: string
+      summary: Remove Product from wishlist
+      tags:
+      - User Shopping
   /salesreportbycategory/{category}/{period}:
     get:
       consumes:

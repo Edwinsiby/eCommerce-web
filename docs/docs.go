@@ -1266,6 +1266,45 @@ const docTemplate = `{
                 }
             }
         },
+        "/removefromwishlist/{product}/{id}": {
+            "delete": {
+                "description": "Removing product from the user wishlist",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User Shopping"
+                ],
+                "summary": "Remove Product from wishlist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ticket/apparel",
+                        "name": "product",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/salesreportbycategory/{category}/{period}": {
             "get": {
                 "description": "Showing the report of sales with respect to product category",
