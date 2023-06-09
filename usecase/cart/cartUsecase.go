@@ -46,7 +46,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 		}
 		existingTicket, err := cu.cartRepo.GetByName(ticket.Name, cartId)
 
-		if err != nil {
+		if existingTicket == nil {
 			err = cu.cartRepo.CreateCartItem(cartItem)
 			if err != nil {
 				return errors.New("Adding new ticket to cart item failed")
@@ -75,7 +75,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 			Price:       float64(apparel.Price),
 		}
 		existingApparel, err := cu.cartRepo.GetByName(apparel.Name, cartId)
-		if err != nil {
+		if existingApparel == nil {
 			err = cu.cartRepo.CreateCartItem(cartItem)
 			if err != nil {
 				return errors.New("Adding new ticket to cart item failed")
