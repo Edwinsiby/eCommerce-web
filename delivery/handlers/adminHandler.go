@@ -310,7 +310,7 @@ func (ct *AdminHandler) CreateTicket(c *gin.Context) {
 		Location:    input.Location,
 		ImageURL:    input.ImageURL,
 		Category:    "ticket",
-		SubCategory: input.Category,
+		SubCategory: input.SubCategory,
 		AdminId:     adminId,
 	}
 	ticketId, err := ct.ProductUsecase.ExecuteCreateTicket(ticket)
