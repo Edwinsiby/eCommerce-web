@@ -834,6 +834,8 @@ func (u *UserHandler) OfferCheck(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
+	} else if offerList == nil {
+		c.JSON(http.StatusOK, gin.H{"No offers": "Add few more products"})
 	} else {
 		c.JSON(http.StatusOK, gin.H{"Available offers are ": offerList})
 	}
