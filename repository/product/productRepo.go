@@ -212,13 +212,6 @@ func (p *ProductRepository) CreateCoupon(coupon *entity.Coupon) error {
 	return nil
 }
 
-func (p *ProductRepository) CreateOffer(offer *entity.Offer) error {
-	if err := p.db.Create(offer).Error; err != nil {
-		return err
-	}
-	return nil
-}
-
 func (p *ProductRepository) GetAllCoupons() (*[]entity.Coupon, error) {
 	var coupns []entity.Coupon
 	currentTime := time.Now()
@@ -236,6 +229,28 @@ func (p *ProductRepository) GetCouponByCode(code string) (*entity.Coupon, error)
 		return nil, err
 	}
 	return coupon, nil
+}
+
+func (p *ProductRepository) UpdateCouponCount(coupon *entity.Coupon) error {
+	return p.db.Save(coupon).Error
+}
+
+func (p *ProductRepository) UpdateCouponUsage(usedCoupon *entity.UsedCoupon) error {
+	if err := p.db.Create(usedCoupon).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *ProductRepository) CheckCouponUsage(usedCoupon *entity.UsedCoupon) error {
+
+	return nil
+}
+func (p *ProductRepository) CreateOffer(offer *entity.Offer) error {
+	if err := p.db.Create(offer).Error; err != nil {
+		return err
+	}
+	return nil
 }
 
 func (p *ProductRepository) GetOfferByPrice(price int) (*[]entity.Offer, error) {

@@ -318,6 +318,21 @@ func (c *CartUsecase) ExecuteApplyCoupon(userId int, code string) (int, error) {
 		if err != nil {
 			return 0, errors.New("User Cart updation failed")
 		}
+		var usedCoupon = entity.UsedCoupon{
+			UserId:     userId,
+			CouponCode: code,
+		}
+		err = c.productRepo.UpdateCouponUsage(&usedCoupon)
+		if err != nil {
+			return 0, errors.New("User Coupon Usage updation failed")
+		}
+		var coupons = entity.Coupon{
+			UsedCount: coupon.UsedCount + 1,
+		}
+		err = c.productRepo.UpdateCouponCount(&coupons)
+		if err != nil {
+			return 0, errors.New("User Coupon Usage updation failed")
+		}
 	}
 
 	return totalOffer, nil

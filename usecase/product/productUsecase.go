@@ -298,5 +298,11 @@ func (p *ProductUsecase) ExecuteAvailableCoupons() (*[]entity.Coupon, error) {
 	if err != nil {
 		return nil, errors.New(err.Error())
 	}
-	return coupons, nil
+	availableCoupons := []entity.Coupon{}
+	for _, coupon := range *coupons {
+		if coupon.UsageLimit != coupon.UsedCount {
+			availableCoupons = append(availableCoupons, coupon)
+		}
+	}
+	return &availableCoupons, nil
 }

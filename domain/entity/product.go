@@ -89,3 +89,8 @@ type Offer struct {
 	Category   string    `json:"category"`
 	AdminId    int       `json:"-"`
 }
+
+type UsedCoupon struct {
+	UserId     int    `json:"userid"`
+	CouponCode string `json:"couponcode"`
+}
