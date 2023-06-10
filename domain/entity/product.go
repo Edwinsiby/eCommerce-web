@@ -68,10 +68,10 @@ type Coupon struct {
 	Code       string    `json:"code"`
 	Type       string    `json:"type"`
 	Amount     int       `json:"amount"`
-	ValidFrom  time.Time `json:"valid_from"`
+	ValidFrom  time.Time `json:"-"`
 	ValidUntil time.Time `json:"valid_until"`
 	UsageLimit int       `json:"usage_limit"`
-	UsedCount  int       `json:"used_count"`
+	UsedCount  int       `json:"-"`
 	Category   string    `json:"category"`
 	AdminId    int       `json:"-"`
 }
@@ -82,7 +82,7 @@ type Offer struct {
 	Type       string    `json:"type"`
 	Amount     int       `json:"amount"`
 	MinPrice   int       `json:"minprice"`
-	ValidFrom  time.Time `json:"valid_from"`
+	ValidFrom  time.Time `json:"-"`
 	ValidUntil time.Time `json:"valid_until"`
 	UsageLimit int       `json:"usage_limit"`
 	UsedCount  int       `json:"-"`
