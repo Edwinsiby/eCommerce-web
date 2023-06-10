@@ -47,7 +47,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 		}
 		existingTicket, _ := cu.cartRepo.GetByName(ticket.Name, cartId)
 		if existingTicket == nil {
-			err = cu.cartRepo.CreateCartItem(cartItem)
+			err := cu.cartRepo.CreateCartItem(cartItem)
 			if err != nil {
 				return errors.New("Adding new ticket to cart item failed")
 			}
