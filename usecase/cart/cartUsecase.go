@@ -2,6 +2,7 @@ package cart
 
 import (
 	"errors"
+	"fmt"
 	"zog/domain/entity"
 	repository "zog/repository/cart"
 	productrepository "zog/repository/product"
@@ -45,7 +46,10 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 			ProductName: ticket.Name,
 			Price:       float64(ticket.Price),
 		}
-		existingTicket, _ := cu.cartRepo.GetByName(ticket.Name, cartId)
+		existingTicket, err := cu.cartRepo.GetByName(ticket.Name, cartId)
+		if err != nil {
+			fmt.Println(err)
+		}
 		if existingTicket == nil {
 			err := cu.cartRepo.CreateCartItem(cartItem)
 			if err != nil {
