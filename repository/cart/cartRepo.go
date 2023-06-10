@@ -55,7 +55,7 @@ func (cr CartRepository) GetCartById(userId int) (*entity.Cart, error) {
 }
 
 func (cr *CartRepository) CreateCartItem(cartItem *entity.CartItem) error {
-	if err := cr.db.Create(&cartItem).Error; err != nil {
+	if err := cr.db.Create(cartItem).Error; err != nil {
 		return err
 	}
 	return nil
