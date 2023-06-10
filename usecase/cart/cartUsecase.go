@@ -26,6 +26,7 @@ func (cu *CartUsecase) ExecuteAddToCart(product string, id int, quantity int, us
 			return errors.New("Failed to create user cart")
 		}
 		userCart = cart
+		cartId = cart.ID
 	} else {
 		cartId = int(userCart.ID)
 	}
