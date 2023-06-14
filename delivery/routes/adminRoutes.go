@@ -9,7 +9,7 @@ import (
 
 func AdminRouter(r *gin.Engine, adminHandler *handlers.AdminHandler) *gin.Engine {
 
-	r.POST("/registeradmin", adminHandler.RegisterAdmin)
+	r.POST("/registeradmin", m.AdminRetriveCookie, adminHandler.RegisterAdmin)
 	r.POST("/adminloginpassword", adminHandler.AdminLoginWithPassword)
 	r.POST("/adminlogin", adminHandler.Login)
 	r.POST("/adminotpvalidation", adminHandler.LoginOtpValidation)
