@@ -37,13 +37,12 @@ import (
 //	@host			www.zogfestiv.store
 //	@BasePath		/
 
-//	@schemes	http
+// @schemes	http
 func main() {
 	db, err := infrastructure.ConnectToDB()
 	if err != nil {
 		log.Fatal(err)
 	}
-	// test changes
 	userRepo := repository.NewUserRepository(db)
 	adminRepo := adminrepository.NewAdminRepository(db)
 	productRepo := productrepository.NewProductRepository(db)
