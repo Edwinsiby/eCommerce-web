@@ -19,13 +19,15 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.19
+
     - name: Set Environment Variables
-      run: |
-          echo "KEY1=${{ secrets.KEY1 }}" >> $GITHUB_ENV
-          echo "KEY2=${{ secrets.KEY2 }}" >> $GITHUB_ENV
-          echo "KEY3=${{ secrets.KEY3 }}" >> $GITHUB_ENV
-          echo "KEY4=${{ secrets.KEY4 }}" >> $GITHUB_ENV
-          echo "KEY5=${{ secrets.KEY5 }}" >> $GITHUB_ENV
+      env:
+          KEY1: ${{ secrets.KEY1 }}
+          KEY2: ${{ secrets.KEY2 }}
+          KEY3: ${{ secrets.KEY3 }}
+          KEY4: ${{ secrets.KEY4 }}
+          KEY5: ${{ secrets.KEY5 }}
+      run: echo "Environment variables are set"
 
     - name: Build
       run: go build -v ./...
