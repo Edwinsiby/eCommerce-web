@@ -3,10 +3,6 @@ package utils
 import (
 	"errors"
 	"fmt"
-	"log"
-	"os"
-
-	"github.com/joho/godotenv"
 
 	"github.com/twilio/twilio-go"
 	openapi "github.com/twilio/twilio-go/rest/verify/v2"
@@ -19,19 +15,19 @@ var (
 	client             *twilio.RestClient
 )
 
-func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	TWILIO_ACCOUNT_SID = os.Getenv("KEY1")
-	TWILIO_AUTH_TOKEN = os.Getenv("KEY2")
-	VERIFY_SERVICE_SID = os.Getenv("KEY3")
-	client = twilio.NewRestClientWithParams(twilio.ClientParams{
-		Username: TWILIO_ACCOUNT_SID,
-		Password: TWILIO_AUTH_TOKEN,
-	})
-}
+// func init() {
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		log.Fatal("Error loading .env file")
+// 	}
+// 	TWILIO_ACCOUNT_SID = os.Getenv("KEY1")
+// 	TWILIO_AUTH_TOKEN = os.Getenv("KEY2")
+// 	VERIFY_SERVICE_SID = os.Getenv("KEY3")
+// 	client = twilio.NewRestClientWithParams(twilio.ClientParams{
+// 		Username: TWILIO_ACCOUNT_SID,
+// 		Password: TWILIO_AUTH_TOKEN,
+// 	})
+// }
 
 func SendOtp(phone string) (string, error) {
 	to := "+91" + phone
