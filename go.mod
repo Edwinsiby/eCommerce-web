@@ -9,6 +9,7 @@ require (
 	github.com/jinzhu/copier v0.3.5
 	github.com/joho/godotenv v1.5.1
 	github.com/razorpay/razorpay-go v0.0.0-20230410044935-943abe07d4c1
+	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
 	github.com/swaggo/swag v1.16.1
@@ -51,7 +52,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect
