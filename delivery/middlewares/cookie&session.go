@@ -3,25 +3,22 @@ package delivery
 import (
 	"errors"
 	"fmt"
-	"log"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"github.com/joho/godotenv"
 )
 
-var JWT_KEY string
+// var JWT_KEY string
 
-func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	JWT_KEY = os.Getenv("KEY4")
+// func init() {
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		log.Fatal("Error loading .env file")
+// 	}
+// 	JWT_KEY = os.Getenv("KEY4")
 
-}
+// }
 
 func UserRetriveCookie(c *gin.Context) {
 
@@ -77,7 +74,7 @@ func CreateJwtCookie(userId int, userPhone string, role string, c *gin.Context) 
 		"phone":  userPhone,
 		"role":   role,
 	})
-	tokenString, err := token.SignedString([]byte(JWT_KEY))
+	tokenString, err := token.SignedString([]byte("qwertyacid12345acidqwerty"))
 
 	if err == nil {
 		fmt.Println("token created")
@@ -106,7 +103,7 @@ func RetriveJwtToken(c *gin.Context) (int, string, string, error) {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 			}
-			return []byte(JWT_KEY), nil
+			return []byte("qwertyacid12345acidqwerty"), nil
 		})
 
 		if err != nil {
