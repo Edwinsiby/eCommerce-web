@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
+	"strings"
 	"testing"
 	"zog/delivery/handlers"
 	"zog/delivery/models"
@@ -62,26 +64,26 @@ func TestSignup(t *testing.T) {
 
 }
 
-// func TestLoginWithPassword(t *testing.T) {
+func TestLoginWithPassword(t *testing.T) {
 
-// 	router.POST("/loginwithpassword", handler.LoginWithPassword)
+	router.POST("/loginwithpassword", handler.LoginWithPassword)
 
-// 	form := url.Values{}
-// 	form.Set("phone", "9876543210")
-// 	form.Set("password", "pass@123")
+	form := url.Values{}
+	form.Set("phone", "9876543210")
+	form.Set("password", "pass@123")
 
-// 	request, err := http.NewRequest("POST", "/loginwithpassword", strings.NewReader(form.Encode()))
-// 	if err != nil {
-// 		fmt.Println("error in http request", err)
-// 	}
-// 	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	request, err := http.NewRequest("POST", "/loginwithpassword", strings.NewReader(form.Encode()))
+	if err != nil {
+		fmt.Println("error in http request", err)
+	}
+	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-// 	recorder := httptest.NewRecorder()
+	recorder := httptest.NewRecorder()
 
-// 	router.ServeHTTP(recorder, request)
+	router.ServeHTTP(recorder, request)
 
-// 	assert.Equal(t, http.StatusOK, recorder.Code)
-// }
+	assert.Equal(t, http.StatusOK, recorder.Code)
+}
 
 type UserRepositoryMock struct {
 	mock.Mock
