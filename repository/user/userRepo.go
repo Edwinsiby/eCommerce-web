@@ -134,3 +134,5 @@ func (ar *UserRepository) CreateOtpKey(otpKey *entity.OtpKey) error {
 
 	return ar.db.Create(otpKey).Error
 }
+
+// done
