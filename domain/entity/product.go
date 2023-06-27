@@ -9,7 +9,7 @@ import (
 type Ticket struct {
 	gorm.Model  `json:"-"`
 	ID          int       `gorm:"primarykey"`
-	Name        string    `json:"name" gorm:"unique"`
+	Name        string    `json:"name"`
 	Price       int       `json:"price"`
 	Date        time.Time `json:"date"`
 	Location    string    `json:"location"`
