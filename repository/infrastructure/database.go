@@ -14,8 +14,7 @@ import (
 
 var DB *gorm.DB
 var dsn string
-
-// var KEY5 = "host=localhost user=edwin dbname=edwin password=acid port=5432 sslmode=disable"
+var KEY5 = "host=localhost user=edwin dbname=edwin password=acid port=5432 sslmode=disable"
 
 // func init() {
 // 	err := godotenv.Load()
@@ -26,7 +25,7 @@ var dsn string
 
 // }
 func ConnectToDB() (*gorm.DB, error) {
-	db, err := gorm.Open(postgres.Open("host=localhost user=edwin dbname=edwin password=acid port=5432 sslmode=disable"), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(KEY5), &gorm.Config{})
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to database: %w", err)
 	}
