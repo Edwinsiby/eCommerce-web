@@ -27,6 +27,7 @@ func init() {
 	dsn = os.Getenv("KEY5")
 
 }
+
 func ConnectToDB() (*gorm.DB, error) {
 	db, err := gorm.Open(postgres.Open(KEY5), &gorm.Config{})
 	if err != nil {
