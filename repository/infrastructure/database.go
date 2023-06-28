@@ -3,11 +3,14 @@ package infrastructre
 import (
 	"database/sql"
 	"fmt"
+	"log"
+	"os"
 	"zog/delivery/models"
 	"zog/domain/entity"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -16,13 +19,15 @@ var DB *gorm.DB
 var dsn string
 var KEY5 = "host=localhost user=edwin dbname=edwin password=acid port=5432 sslmode=disable"
 
-//	func init() {
-//		err := godotenv.Load()
-//		if err != nil {
-//			log.Fatal("Error loading .env file")
-//		}
-//		dsn = os.Getenv("KEY5")
-//	}
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	dsn = os.Getenv("KEY5")
+
+}
+
 func ConnectToDB() (*gorm.DB, error) {
 	db, err := gorm.Open(postgres.Open(KEY5), &gorm.Config{})
 	if err != nil {
