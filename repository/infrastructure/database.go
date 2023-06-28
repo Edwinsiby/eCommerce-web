@@ -16,14 +16,13 @@ var DB *gorm.DB
 var dsn string
 var KEY5 = "host=localhost user=edwin dbname=edwin password=acid port=5432 sslmode=disable"
 
-// func init() {
-// 	err := godotenv.Load()
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
-// 	dsn = os.Getenv("KEY5")
-
-// }
+//	func init() {
+//		err := godotenv.Load()
+//		if err != nil {
+//			log.Fatal("Error loading .env file")
+//		}
+//		dsn = os.Getenv("KEY5")
+//	}
 func ConnectToDB() (*gorm.DB, error) {
 	db, err := gorm.Open(postgres.Open(KEY5), &gorm.Config{})
 	if err != nil {
