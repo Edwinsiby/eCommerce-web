@@ -3,22 +3,25 @@ package delivery
 import (
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
+	"github.com/joho/godotenv"
 )
 
-// var JWT_KEY string
+var JWT_KEY string
 
-// func init() {
-// 	err := godotenv.Load()
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
-// 	JWT_KEY = os.Getenv("KEY4")
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	JWT_KEY = os.Getenv("KEY4")
 
-// }
+}
 
 func UserRetriveCookie(c *gin.Context) {
 
