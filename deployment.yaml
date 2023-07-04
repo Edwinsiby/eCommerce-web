@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zog-festiv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zog-festiv
+  template:
+    metadata:
+      labels:
+        app: zog-festiv
+    spec:
+      containers:
+        - name: zog-festiv
+          image: edwinsiby/zog_festiv:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: db-config

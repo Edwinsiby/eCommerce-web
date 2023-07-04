@@ -2264,12 +2264,6 @@ const docTemplate = `{
                 "usage_limit": {
                     "type": "integer"
                 },
-                "used_count": {
-                    "type": "integer"
-                },
-                "valid_from": {
-                    "type": "string"
-                },
                 "valid_until": {
                     "type": "string"
                 }
@@ -2310,9 +2304,6 @@ const docTemplate = `{
                 },
                 "usage_limit": {
                     "type": "integer"
-                },
-                "valid_from": {
-                    "type": "string"
                 },
                 "valid_until": {
                     "type": "string"
@@ -2533,7 +2524,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "www.zogfestiv.store",
+	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
 	Title:            "Zog_festiv eCommerce API",

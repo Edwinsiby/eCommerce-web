@@ -15,7 +15,7 @@ import (
 var JWT_KEY string
 
 func init() {
-	err := godotenv.Load()
+	err := godotenv.Load("app.env")
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

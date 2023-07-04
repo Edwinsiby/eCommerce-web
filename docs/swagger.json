@@ -13,7 +13,7 @@
         },
         "version": "1.0"
     },
-    "host": "www.zogfestiv.store",
+    "host": "localhost:8080",
     "basePath": "/",
     "paths": {
         "/addaddress": {
@@ -2260,12 +2260,6 @@
                 "usage_limit": {
                     "type": "integer"
                 },
-                "used_count": {
-                    "type": "integer"
-                },
-                "valid_from": {
-                    "type": "string"
-                },
                 "valid_until": {
                     "type": "string"
                 }
@@ -2306,9 +2300,6 @@
                 },
                 "usage_limit": {
                     "type": "integer"
-                },
-                "valid_from": {
-                    "type": "string"
                 },
                 "valid_until": {
                     "type": "string"

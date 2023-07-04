@@ -34,10 +34,10 @@ import (
 
 //	@license.name	Apache 2.0
 //	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
-//	@host			www.zogfestiv.store
+//	@host			localhost:8080
 //	@BasePath		/
 
-// @schemes	http
+//	@schemes	http
 func main() {
 	db, err := infrastructure.ConnectToDB()
 	if err != nil {
@@ -72,4 +72,4 @@ func main() {
 	}
 }
 
-// test
+// test www.zogfestiv.store

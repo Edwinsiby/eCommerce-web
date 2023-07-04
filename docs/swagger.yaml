@@ -144,10 +144,6 @@ definitions:
         type: string
       usage_limit:
         type: integer
-      used_count:
-        type: integer
-      valid_from:
-        type: string
       valid_until:
         type: string
     type: object
@@ -175,8 +171,6 @@ definitions:
         type: string
       usage_limit:
         type: integer
-      valid_from:
-        type: string
       valid_until:
         type: string
     type: object
@@ -313,7 +307,7 @@ definitions:
       phone:
         type: string
     type: object
-host: www.zogfestiv.store
+host: localhost:8080
 info:
   contact: {}
   description: API for ecommerce website
