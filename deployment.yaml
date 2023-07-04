@@ -1,22 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zog-festiv
+  name: api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: zog-festiv
+      app: api
   template:
     metadata:
       labels:
-        app: zog-festiv
+        app: api
     spec:
       containers:
-        - name: zog-festiv
+        - name: api
           image: edwinsiby/zog_festiv:latest
           ports:
             - containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: db-config
+          env:
+            - name: DNS
+              value: "host=db user=edwin dbname=edwin password=acid port=5432 sslmode=disable"
+          # readinessProbe:
+          #   httpGet:
+          #     path: /logout
+          #     port: 8080
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 5
+
+
