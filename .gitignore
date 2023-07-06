@@ -3,3 +3,4 @@ deployment.yaml
 service.yaml
 psql-deployment.yaml
 psql-service.yaml
+docker-compose.yaml
