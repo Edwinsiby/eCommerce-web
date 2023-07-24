@@ -16,7 +16,6 @@ func CalculatePeriodDates(period string) (time.Time, time.Time) {
 		start := now.AddDate(-1, 0, 0)
 		return start, now
 	default:
-
 		start := now.AddDate(0, 0, -6)
 		return start, now
 	}

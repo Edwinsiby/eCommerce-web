@@ -99,7 +99,6 @@ func (uh *UserHandler) SignupOtpValidation(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{"massage": "user signup succesfull"})
 	}
-
 }
 
 // UserLogin  godoc
@@ -126,7 +125,6 @@ func (uh *UserHandler) LoginWithPassword(c *gin.Context) {
 		middlewares.CreateJwtCookie(userId, phone, "user", c)
 		c.JSON(http.StatusOK, gin.H{"massage": "user loged in succesfully and cookie stored"})
 	}
-
 }
 
 // UserLogin  godoc
@@ -149,7 +147,6 @@ func (uh *UserHandler) LoginWithOtp(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{"Otp send succesfuly to": phone, "Key": key})
 	}
-
 }
 
 // UserOtpValidation  godoc

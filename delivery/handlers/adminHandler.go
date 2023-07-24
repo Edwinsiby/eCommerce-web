@@ -137,7 +137,6 @@ func (ah *AdminHandler) LoginOtpValidation(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"massage": "admin loged in succesfully and cookie stored"})
 
 	}
-
 }
 
 // Admin Home  godoc
