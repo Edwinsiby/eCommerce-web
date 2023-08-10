@@ -1,3 +1,3 @@
 # eCommerce-web_development
-eCommerce website documented with swagger and hosted on the aws instance
+eCommerce website documented with swagger and integrated with postgresql database
 http://www.zogfestiv.store/docs/index.html
