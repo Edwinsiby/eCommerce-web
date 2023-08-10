@@ -1,6 +1,3 @@
 app.env
-deployment.yaml
-service.yaml
-psql-deployment.yaml
-psql-service.yaml
+kubernetes
 docker-compose.yaml
